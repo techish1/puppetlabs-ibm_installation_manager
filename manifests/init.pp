@@ -175,6 +175,8 @@ class ibm_installation_manager (
       group        => $group,
       require      => File[$_source_dir],
       before       => Exec['Install IBM Installation Manager'],
+      proxy_server => "${lookup('proxy_type')}://${lookup('proxy_host')}:${lookup('proxy_port')}",
+      proxy_type => "https",
     }
   }
 
